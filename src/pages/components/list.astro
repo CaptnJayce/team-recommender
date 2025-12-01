@@ -1,0 +1,66 @@
+---
+const res = await fetch("https://genshin.jmp.blue/characters");
+const characterNames: string[] = await res.json();
+---
+
+<div class="box">
+    <ul class="character-list">
+        {
+            characterNames.map((characterName) => {
+                const imageName = characterName;
+                const imageUrl = `https://genshin.jmp.blue/characters/${imageName}/icon`;
+
+                return (
+                    <li class="character-item">
+                        <div class="character-portrait">
+                            <img
+                                src={imageUrl}
+                                alt={characterName}
+                                width="128"
+                                height="128"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="character-name">{characterName}</div>
+                    </li>
+                );
+            })
+        }
+    </ul>
+</div>
+
+<style>
+    .box {
+        padding: 0rem 10rem 0rem 10rem;
+    }
+
+    .character-list {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+
+    .character-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.25rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+    }
+
+    .character-portrait {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .character-name {
+        font-weight: bold;
+        font-size: 1rem;
+        word-break: break-word;
+    }
+</style>
