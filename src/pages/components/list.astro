@@ -31,24 +31,27 @@ const characterNames: string[] = await res.json();
 
 <style>
     .box {
-        padding: 0rem 10rem 0rem 10rem;
+        padding: 0 2rem 0 2rem;
+        width: 90%;
     }
 
     .character-list {
         list-style: none;
         padding: 0;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, 128px);
+        gap: 1.1rem; /* there's got to be a better solution than 1.1rem */
     }
 
     .character-item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0.25rem;
         border: 1px solid #e0e0e0;
         border-radius: 8px;
+        width: 128px;
+        height: 158px;
+        box-sizing: border-box;
     }
 
     .character-portrait {
@@ -60,7 +63,8 @@ const characterNames: string[] = await res.json();
 
     .character-name {
         font-weight: bold;
-        font-size: 1rem;
-        word-break: break-word;
+        font-size: clamp(10px, 4vw, 14px);
+        text-align: center;
+        line-height: 1.2;
     }
 </style>

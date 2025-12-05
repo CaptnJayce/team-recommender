@@ -1,8 +1,34 @@
 ---
 import Layout from "./components/layout.astro";
+import Filter from "./components/filter.astro";
 import List from "./components/list.astro";
+import Teams from "./components/teams.astro"
 ---
 
 <Layout>
-    <List />
+    <div class="left">
+        <Filter />
+        <List />
+    </div>
+    <div class="right">
+        <Teams />
+    </div>
 </Layout>
+
+<style>
+    .left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        float: left;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        float: right;
+    }
+</style>

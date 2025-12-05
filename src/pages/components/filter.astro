@@ -1,0 +1,60 @@
+---
+const res = await fetch("https://genshin.jmp.blue/elements");
+const elements: string[] = await res.json();
+---
+
+<div class="box">
+        <ul class="element-list">
+            {
+                elements.map((element) => {
+                    const imageName = element;
+                    const imageUrl = `https://genshin.jmp.blue/elements/${imageName}/icon`;
+
+                    return (
+                        <li class="element-item">
+                            <div class="element-icon">
+                                <img
+                                    src={imageUrl}
+                                    alt={element}
+                                    width="64"
+                                    height="64"
+                                    loading="lazy"
+                                />
+                            </div>
+                        </li>
+                    );
+                })
+            }
+        </ul>
+</div>
+
+
+<style>
+    .box {
+        padding: 0 2rem 0 2rem;
+        width: 90%;
+    }
+
+    .element-list {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 64px);
+        justify-content: center;
+        gap: 3rem;
+    }
+
+
+    .element-item {
+        display: flex;
+        flex-direction: column;
+        width: 64px;
+    }
+
+    .element-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 64px;
+    }
+</style>
